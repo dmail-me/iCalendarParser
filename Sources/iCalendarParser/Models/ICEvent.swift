@@ -17,10 +17,10 @@ public struct ICEvent: ICComponentable {
     /// https://www.rfc-editor.org/rfc/rfc5545#section-3.8.4.1)
     public var attendees: [ICAttendee]?
 
-    /// Provides the capability to associate a document object with a calendar component.
-    ///
-    /// See more in [RFC 5545](
-    /// https://www.rfc-editor.org/rfc/rfc5545#section-3.8.1.1))
+    // Provides the capability to associate a document object with a calendar component.
+    //
+    // See more in [RFC 5545](
+    // https://www.rfc-editor.org/rfc/rfc5545#section-3.8.1.1))
     // var attachment: [ICAttachment]?
 
     // var categories: [String]?
@@ -77,25 +77,25 @@ public struct ICEvent: ICComponentable {
     /// https://www.rfc-editor.org/rfc/rfc5545#section-3.8.2.4)
     public var dtStart: ICDateTime?
 
-    /// A positive duration of time.
-    ///
-    /// See more in [RFC 5545](
-    /// https://www.rfc-editor.org/rfc/rfc5545#section-3.8.2.5)
+    // A positive duration of time.
+    //
+    // See more in [RFC 5545](
+    // https://www.rfc-editor.org/rfc/rfc5545#section-3.8.2.5)
     // var duration: ICDuration?
 
-    /// The list of DATE-TIME exceptions for recurring events, to-dos, journal entries,
-    /// or time zone definitions.
-    ///
-    /// See more in [RFC 5545](
-    /// https://www.rfc-editor.org/rfc/rfc5545#section-3.8.5.1)
-    //var exceptionDates: [Date]?
+    // The list of DATE-TIME exceptions for recurring events, to-dos, journal entries,
+    // or time zone definitions.
+    //
+    // See more in [RFC 5545](
+    // https://www.rfc-editor.org/rfc/rfc5545#section-3.8.5.1)
+    // var exceptionDates: [Date]?
 
-    /// Specifies information related to the global position for the activity specified by
-    /// a calendar component.
-    ///
-    /// See more in [RFC 5545](
-    /// https://www.rfc-editor.org/rfc/rfc5545#section-3.8.1.6)
-    //var geoPosition: [CGFloat]?
+    // Specifies information related to the global position for the activity specified by
+    // a calendar component.
+    //
+    // See more in [RFC 5545](
+    // https://www.rfc-editor.org/rfc/rfc5545#section-3.8.1.6)
+    // var geoPosition: [CGFloat]?
 
     /// Any property name with a "X-" prefix
     ///
@@ -139,16 +139,16 @@ public struct ICEvent: ICComponentable {
     /// https://www.rfc-editor.org/rfc/rfc5545#section-3.8.4.4)
     public var recurrenceId: ICDateTime?
 
-    /// The list of DATE-TIME values for recurring events, to-dos, journal entries, or time zone definitions.
-    ///
-    /// See more in [RFC 5545](
-    /// https://www.rfc-editor.org/rfc/rfc5545#section-3.8.5.2)
+    // The list of DATE-TIME values for recurring events, to-dos, journal entries, or time zone definitions.
+    //
+    // See more in [RFC 5545](
+    // https://www.rfc-editor.org/rfc/rfc5545#section-3.8.5.2)
     // var recurrenceDates: [ICDateTime]?
 
-    /// A rule or repeating pattern for recurring events, to-dos, journal entries, or time zone definitions.
-    ///
-    /// See more in [RFC 5545](
-    /// https://www.rfc-editor.org/rfc/rfc5545#section-3.8.5.3)
+    // A rule or repeating pattern for recurring events, to-dos, journal entries, or time zone definitions.
+    //
+    // See more in [RFC 5545](
+    // https://www.rfc-editor.org/rfc/rfc5545#section-3.8.5.3)
     // var recurrenceRule: ICRule?
 
     // var relatedTo: [String]?
