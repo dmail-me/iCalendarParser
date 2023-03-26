@@ -3,18 +3,17 @@
 /// See more in [RFC 5545](
 /// https://www.rfc-editor.org/rfc/rfc5545#section-3.8.4.1)
 public struct ICAttendee {
-    
+
     /// Common name
     public var cname: String?
-    
+
     public var email: String?
-    
+
     public var nonStandardProperties: [String: String]?
-    
+
     /// Participation status of attendee
     public var participationStatus: ParticipationStatus?
-    
-    
+
     public init(
         cname: String? = nil,
         email: String? = nil,

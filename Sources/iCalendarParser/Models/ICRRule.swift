@@ -3,12 +3,12 @@
 /// See more in [RFC 5545](
 /// https://www.rfc-editor.org/rfc/rfc5545#section-3.3.10)
 public struct ICRRule {
-    
+
     // MARK: - Public properties
-    
+
     /// At which days (of the week/year) it should occur.
     public var byDay: [Day]?
-    
+
     /// At which days of the month it should occur. Specifies a COMMA-separated
     /// list of days of the month.
     ///
@@ -22,7 +22,7 @@ public struct ICRRule {
             )
         }
     }
-    
+
     /// At which days of the year it should occur. Specifies a list of days
     /// of the year.
     ///
@@ -36,7 +36,7 @@ public struct ICRRule {
             )
         }
     }
-    
+
     /// At which hours of the day it should occur.
     ///
     /// Must be between 0 and 24 (exclusive).
@@ -49,7 +49,7 @@ public struct ICRRule {
             )
         }
     }
-    
+
     /// At which minutes of the hour it should occur.
     ///
     /// Must be between 0 and 60 (exclusive).
@@ -62,7 +62,7 @@ public struct ICRRule {
             )
         }
     }
-    
+
     /// At which months it should occur.
     ///
     /// Must be between 1 and 12 (inclusive).
@@ -75,7 +75,7 @@ public struct ICRRule {
             )
         }
     }
-    
+
     /// At which seconds of the minute it should occur.
     /// Must be between 0 and 60 (inclusive).
     public var bySecond: [Int]? {
@@ -87,7 +87,7 @@ public struct ICRRule {
             )
         }
     }
-    
+
     /// Specifies a COMMA-separated list of values that corresponds to the nth occurrence within
     /// the set of recurrence instances specified by the rule. BYSETPOS operates on a set of
     /// recurrence instances in one interval of the recurrence rule.  For example, in a WEEKLY rule,
@@ -105,7 +105,7 @@ public struct ICRRule {
             )
         }
     }
-    
+
     /// At which weeks of the year it should occur. Specificies a list of
     /// ordinals specifying weeks of the year.
     ///
@@ -119,7 +119,7 @@ public struct ICRRule {
             )
         }
     }
-    
+
     /// The number of recurrences.
     public var count: Int? {
         willSet {
@@ -128,10 +128,10 @@ public struct ICRRule {
             }
         }
     }
-    
+
     /// The frequency of the recurrence.
     public var frequency: Frequency
-          
+
     /// At which interval the recurrence repeats (in terms of the frequency).
     /// E.g. 1 means every hour for an hourly rule, ...
     ///
@@ -142,7 +142,7 @@ public struct ICRRule {
     ///
     /// Monday by default.
     public var startOfWorkweek: DayOfWeek?
-    
+
     /// The end date/time.
     public var until: ICDateTime? {
         willSet {
@@ -151,7 +151,7 @@ public struct ICRRule {
             }
         }
     }
-    
+
     // MARK: - Frequency
 
     public enum Frequency {
@@ -162,7 +162,7 @@ public struct ICRRule {
         case weekly
         case monthly
         case yearly
-        
+
         init?(propertyName: String) {
             switch propertyName {
             case Constant.Frequency.secondly:
@@ -193,7 +193,7 @@ public struct ICRRule {
         case friday
         case saturday
         case sunday
-        
+
         public var weekday: Int {
             switch self {
             case .sunday:
@@ -212,7 +212,7 @@ public struct ICRRule {
                 return 7
             }
         }
-        
+
         init?(propertyName: String) {
             switch propertyName {
             case Constant.DayOfWeek.monday:
@@ -234,14 +234,14 @@ public struct ICRRule {
             }
         }
     }
-    
+
     // MARK: - Day
 
     public struct Day: Equatable {
-        
+
         /// The week. May be negative.
         public let week: Int?
-        
+
         /// The day of the week.
         public let dayOfWeek: DayOfWeek
 
@@ -251,7 +251,7 @@ public struct ICRRule {
         ) {
             self.week = week
             self.dayOfWeek = dayOfWeek
-            
+
             if let week {
                 assert(
                     (1...53).contains(abs(week)),
@@ -271,23 +271,23 @@ public struct ICRRule {
         public static func last(_ dayOfWeek: DayOfWeek) -> Self {
             Self(week: -1, dayOfWeek: dayOfWeek)
         }
-        
+
         public static func from(_ value: String) -> Self? {
             let index = value.index(value.startIndex, offsetBy: value.count - 2)
-           
+
             let dayOfWeekStr = String(value[index...])
             let weekStr = String(value[..<index])
-            
+
             guard let dayOfWeek = DayOfWeek(propertyName: dayOfWeekStr) else {
                 return nil
             }
-            
+
             return Self(week: Int(weekStr), dayOfWeek: dayOfWeek)
         }
     }
-    
+
     // MARK: - Private properties
-    
+
     private var properties: [(String, [Any]?)] {
         [
             (Constant.Property.byDay, byDay),
@@ -306,7 +306,7 @@ public struct ICRRule {
             (Constant.Property.until, [until].compactMap { $0 })
         ]
     }
-    
+
     // MARK: - Init
 
     public init(

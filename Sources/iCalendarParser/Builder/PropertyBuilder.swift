@@ -1,22 +1,22 @@
 import Foundation
 
 struct PropertyBuilder {
-    
+
     // MARK: - Build functions
-    
+
     static func buildDateTime(
         from prop: ICProperty
     ) -> ICDateTime? {
         let params = getParamsOfValue(from: prop.name)
         let valueType = getDateTimeType(from: params)
         let tzid = getTimeZoneId(from: params)
-        
+
         guard
             let date = valueType.dateFormatter(tzId: tzid).date(from: prop.value)
         else {
             return nil
         }
-        
+
         switch valueType {
         case .date:
             return .date(from: date)
@@ -24,7 +24,7 @@ struct PropertyBuilder {
             return .dateTime(from: date, tzId: tzid)
         }
     }
-    
+
     static func buildRRule(
         from prop: ICProperty
     ) -> ICRRule? {
@@ -32,16 +32,16 @@ struct PropertyBuilder {
         let frequencyProperty = params
             .filter { $0.name == Constant.Property.frequency }
             .first
-        
+
         guard
             let frequencyProperty = frequencyProperty,
             let frequency = ICRRule.Frequency(propertyName: frequencyProperty.value)
         else {
             return nil
         }
-        
+
         var rule = ICRRule(frequency: frequency)
-        
+
         params.forEach { property in
             switch property.name {
             case Constant.Property.interval:
@@ -92,16 +92,16 @@ struct PropertyBuilder {
                 break
             }
         }
-        
+
         return rule
     }
-    
+
     static func buildAttendees(
         from props: [ICProperty]
     ) -> [ICAttendee]? {
         return props.map { prop -> ICAttendee in
             var attendee = ICAttendee()
-            
+
             let params = getParamsOfValue(from: prop.name)
             params.forEach { property in
                 switch property.name {
@@ -116,14 +116,14 @@ struct PropertyBuilder {
                     attendee.nonStandardProperties?[property.name] = property.value
                 }
             }
-            
+
             attendee.email = prop.value.replacingOccurrences(of: "mailto:", with: "")
             return attendee
         }
     }
-    
+
     // MARK: - Private functions
-    
+
     /// Returns an array of params for the given value
     private static func getParamsOfValue(
         from value: String
@@ -133,7 +133,7 @@ struct PropertyBuilder {
             .filter { $0.count > 1 }
             .map { ($0[0], $0[1]) }
     }
-    
+
     /// Returns `ICDateTimeType` from the given properties
     ///
     /// The default value is `.dateTime` if no property is found
@@ -147,7 +147,7 @@ struct PropertyBuilder {
         else {
             return .dateTime
         }
-        
+
         switch valueType {
         case Constant.Property.date:
             return .date
@@ -155,7 +155,7 @@ struct PropertyBuilder {
             return .dateTime
         }
     }
-    
+
     /// Returns the ID for Timezone component
     private static func getTimeZoneId(
         from parameters: [ICProperty]

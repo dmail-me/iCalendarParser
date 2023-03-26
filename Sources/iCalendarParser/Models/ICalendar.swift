@@ -5,15 +5,15 @@ import Foundation
 /// See more in [RFC 5545](
 /// https://www.rfc-editor.org/rfc/rfc5545#section-3.4)
 public struct ICalendar {
-    
+
     var components: [ICComponentable] {
         [events, timeZones]
             .compactMap { $0 as? [ICComponentable] }
             .flatMap { $0 }
     }
-    
+
     // MARK: - Public properties
-    
+
     /// Defines the calendar scale used for the calendar
     /// information specified in the iCalendar object.
     ///
@@ -22,22 +22,22 @@ public struct ICalendar {
     /// See more in [RFC 5545](
     /// https://www.rfc-editor.org/rfc/rfc5545#section-3.7.1)
     public var calendarScale: String?
-    
+
     /// All the event components in the object
     public var events: [ICEvent]
-    
+
     /// iCalendar object method associated with the calendar object.
     ///
     /// See more in [RFC 5545
     /// ](https://www.rfc-editor.org/rfc/rfc5545#section-3.7.2)
     public var method: String?
-    
+
     /// The identifier for the product that created the iCalendar object.
     ///
     /// See more in [RFC 5545
     /// ](https://www.rfc-editor.org/rfc/rfc5545#section-3.7.3)
     public var productId: ICProductIdentifier
-    
+
     /// All the timezone components in the object.
     ///
     /// Multiple "VTIMEZONE" calendar components can exist in an iCalendar object.
@@ -45,7 +45,7 @@ public struct ICalendar {
     /// This is necessary for some classes of events, such as airline flights, that start in
     /// one time zone and end in another.
     public var timeZones: [ICTimeZone]
-    
+
     /// Returns an event only when there is one event component
     public var uniqueEvent: ICEvent? {
         guard events.count == 1 else {
@@ -53,7 +53,7 @@ public struct ICalendar {
         }
         return events.first
     }
-    
+
     /// Returns a time zone only when there is one time zone component
     public var uniqueTimeZone: ICTimeZone? {
         guard timeZones.count == 1 else {
@@ -61,7 +61,7 @@ public struct ICalendar {
         }
         return timeZones.first
     }
-    
+
     /// The identifier corresponding to the highest version number or the minimum
     /// and maximum range of the iCalendar specification that is required in order to interpret the iCalendar object.
     ///
@@ -70,7 +70,7 @@ public struct ICalendar {
     /// See more in [RFC 5545
     /// ](https://www.rfc-editor.org/rfc/rfc5545#section-3.7.4)
     public var version: String
-    
+
     public init(
         calendarScale: String? = Constant.ICalSpec.defaultCalScale,
         events: [ICEvent] = [],

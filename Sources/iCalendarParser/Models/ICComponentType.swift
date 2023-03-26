@@ -1,11 +1,11 @@
 import Foundation
 
 enum ICComponentType {
-    
+
     case alarm
     case event
     case timeZone
-    
+
     var name: String {
         switch self {
         case .alarm:

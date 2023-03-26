@@ -1,14 +1,14 @@
 import Foundation
 
 struct ICFormatter {
-    
+
     /// Returns a configured `DateFormatter` based on `ICDateTimeType`
     static func dateFormatter(
         type: DateTimeType,
         tzid: String? = nil
     ) -> DateFormatter {
         let formatter = DateFormatter()
-        
+
         if let tzid {
             formatter.timeZone = TimeZone(identifier: tzid)
         } else if type == .date {
@@ -16,7 +16,7 @@ struct ICFormatter {
         } else {
             formatter.timeZone = TimeZone(abbreviation: "UTC")
         }
-        
+
         formatter.dateFormat = {
             switch type {
             case .date:
@@ -27,7 +27,7 @@ struct ICFormatter {
                     : "yyyyMMdd'T'HHmmss"
             }
         }()
-        
+
         return formatter
     }
 }

@@ -5,7 +5,7 @@ public enum ParticipationStatus {
     case accepted
     case declined
     case tenative
-    
+
     public init?(rawValue: String) {
         switch rawValue {
         case Constant.PartStat.needsAction:

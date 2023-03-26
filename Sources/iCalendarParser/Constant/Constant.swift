@@ -3,7 +3,7 @@ import Foundation
 // MARK: - Public
 
 public enum Constant {
-    
+
     public enum Component {
         public static let alarm = "VALARM"
         public static let daylight = "DAYLIGHT"
@@ -11,7 +11,7 @@ public enum Constant {
         public static let timeZone = "VTIMEZONE"
         public static let standard = "STANDARD"
     }
-    
+
     public enum ICalSpec {
         public static let defaultCalScale: String = "GREGORIAN"
         public static let version: String = "2.0"
@@ -21,25 +21,25 @@ public enum Constant {
 // MARK: - Internal
 
 extension Constant {
-    
+
     enum Property {
         static let begin: String = "BEGIN"
         static let end: String = "END"
-        
+
         static let date: String = "DATE"
         static let value: String = "VALUE"
-        
+
         static let calScale = "CALSCALE"
         static let method = "METHOD"
         static let prodid = "PRODID"
         static let version = "VERSION"
-        
+
         // TimeZone
         static let tzId: String = "TZID"
         static let tzName: String = "TZNAME"
         static let tzOffsetFrom: String = "TZOFFSETFROM"
         static let tzOffsetTo: String = "TZOFFSETTO"
-        
+
         // Recurrence Rule
         static let frequency = "FREQ"
         static let interval = "INTERVAL"
@@ -55,7 +55,7 @@ extension Constant {
         static let byMonth = "BYMONTH"
         static let bySetPos = "BYSETPOS"
         static let startOfWorkweek = "WKST"
-        
+
         // Attendee
         static let attendee = "ATTENDEE"
         static let cuType = "CUTYPE"
@@ -63,7 +63,7 @@ extension Constant {
         static let partstat = "PARTSTAT"
         static let rsvp = "RSVP"
         static let cname = "CN"
-        
+
         static let attachment: String = "ATTACH"
         static let created: String = "CREATED"
         static let classification: String = "CLASS"
@@ -89,13 +89,13 @@ extension Constant {
         static let uid: String = "UID"
         static let url: String = "URL"
     }
-    
+
     enum ProductId {
         static let companyName: String = "Aria Inc"
         static let productName: String = "ICalendarParser"
         static let language: String = "EN"
     }
-    
+
     enum Frequency {
         static let secondly: String = "SECONDLY"
         static let minutely: String = "MINUTELY"
@@ -105,7 +105,7 @@ extension Constant {
         static let monthly: String = "MONTHLY"
         static let yearly: String = "YEARLY"
     }
-    
+
     enum DayOfWeek {
         static let monday = "MO"
         static let tuesday = "TU"
@@ -115,7 +115,7 @@ extension Constant {
         static let saturday = "SA"
         static let sunday = "SU"
     }
-    
+
     enum PartStat {
         static let needsAction = "NEEDS-ACTION"
         static let accepted = "ACCEPTED"

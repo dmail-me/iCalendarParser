@@ -3,13 +3,13 @@ import Foundation
 public enum DateTimeType {
     case date
     case dateTime
-    
+
     /// Returns a configured `DateFormatter`
     public func dateFormatter(
         tzId: String? = nil
     ) -> DateFormatter {
         let formatter = DateFormatter()
-        
+
         if let tzId {
             formatter.timeZone = TimeZone(identifier: tzId)
         } else if self == .date {
@@ -17,7 +17,7 @@ public enum DateTimeType {
         } else {
             formatter.timeZone = TimeZone(abbreviation: "UTC")
         }
-        
+
         formatter.dateFormat = {
             switch self {
             case .date:
@@ -28,7 +28,7 @@ public enum DateTimeType {
                     : "yyyyMMdd'T'HHmmss"
             }
         }()
-        
+
         return formatter
     }
 }

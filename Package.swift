@@ -8,7 +8,7 @@ let package = Package(
     products: [
         .library(
             name: "iCalendarParser",
-            targets: ["iCalendarParser"]),
+            targets: ["iCalendarParser"])
     ],
     dependencies: [],
     targets: [
@@ -17,6 +17,6 @@ let package = Package(
             dependencies: []),
         .testTarget(
             name: "iCalendarParserTests",
-            dependencies: ["iCalendarParser"]),
+            dependencies: ["iCalendarParser"])
     ]
 )
