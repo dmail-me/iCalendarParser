@@ -1,6 +1,9 @@
 # iCalendarParser
 
 <p>
+    <a href="https://github.com/dmail-me/iCalendarParser/actions">
+      <img src="https://github.com/dmail-me/iCalendarParser/workflows/ci/badge.svg?branch=main">
+    </a>
     <img src="https://img.shields.io/badge/Swift-5.7-ff69b4.svg" />
     <img src="https://img.shields.io/badge/license-MIT-black.svg" />
 </p>
