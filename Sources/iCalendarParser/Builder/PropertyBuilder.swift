@@ -25,6 +25,7 @@ struct PropertyBuilder {
         }
     }
 
+    // swiftlint:disable:next cyclomatic_complexity
     static func buildRRule(
         from prop: ICProperty
     ) -> ICRRule? {
@@ -36,9 +37,7 @@ struct PropertyBuilder {
         guard
             let frequencyProperty = frequencyProperty,
             let frequency = ICRRule.Frequency(propertyName: frequencyProperty.value)
-        else {
-            return nil
-        }
+        else { return nil }
 
         var rule = ICRRule(frequency: frequency)
 
@@ -51,41 +50,23 @@ struct PropertyBuilder {
             case Constant.Property.count:
                 rule.count = Int(property.value)
             case Constant.Property.bySecond:
-                rule.bySecond = property.value
-                    .components(separatedBy: ",")
-                    .compactMap { Int($0) }
+                rule.bySecond = getIntComponents(from: property.value)
             case Constant.Property.byMinute:
-                rule.byMinute = property.value
-                    .components(separatedBy: ",")
-                    .compactMap { Int($0) }
+                rule.byMinute = getIntComponents(from: property.value)
             case Constant.Property.byHour:
-                rule.byHour = property.value
-                    .components(separatedBy: ",")
-                    .compactMap { Int($0) }
+                rule.byHour = getIntComponents(from: property.value)
             case Constant.Property.byDay:
-                rule.byDay = property.value
-                    .components(separatedBy: ",")
-                    .compactMap { .from($0) }
+                rule.byDay = getDayComponents(from: property.value)
             case Constant.Property.byDayOfMonth:
-                rule.byDayOfMonth = property.value
-                    .components(separatedBy: ",")
-                    .compactMap { Int($0) }
+                rule.byDayOfMonth = getIntComponents(from: property.value)
             case Constant.Property.byDayOfYear:
-                rule.byDayOfYear = property.value
-                    .components(separatedBy: ",")
-                    .compactMap { Int($0) }
+                rule.byDayOfYear = getIntComponents(from: property.value)
             case Constant.Property.byWeekOfYear:
-                rule.byWeekOfYear = property.value
-                    .components(separatedBy: ",")
-                    .compactMap { Int($0) }
+                rule.byWeekOfYear = getIntComponents(from: property.value)
             case Constant.Property.byMonth:
-                rule.byMonth = property.value
-                    .components(separatedBy: ",")
-                    .compactMap { Int($0) }
+                rule.byMonth = getIntComponents(from: property.value)
             case Constant.Property.bySetPos:
-                rule.bySetPos = property.value
-                    .components(separatedBy: ",")
-                    .compactMap { Int($0) }
+                rule.bySetPos = getIntComponents(from: property.value)
             case Constant.Property.startOfWorkweek:
                 rule.startOfWorkweek = .init(propertyName: property.value)
             default:
@@ -163,5 +144,21 @@ struct PropertyBuilder {
         return parameters.first(where: {
             $0.name == Constant.Property.tzId
         })?.value
+    }
+
+    private static func getIntComponents(
+        from value: String
+    ) -> [Int] {
+        value
+            .components(separatedBy: ",")
+            .compactMap { Int($0) }
+    }
+
+    private static func getDayComponents(
+        from value: String
+    ) -> [ICRRule.Day] {
+        value
+            .components(separatedBy: ",")
+            .compactMap { .from($0) }
     }
 }

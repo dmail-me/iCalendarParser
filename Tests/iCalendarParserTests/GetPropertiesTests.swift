@@ -16,7 +16,8 @@ final class GetPropertiesTests: XCTestCase {
 
     func testPropertiesShouldNotIncludeSpace() {
         let rawIcs = """
-        ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;RSVP=TRUE\r\n ;CN=example@mail.com;X-NUM-GUESTS=0:mailto:example@mail.com
+        ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;
+        RSVP=TRUE\r\n ;CN=example@mail.com;X-NUM-GUESTS=0:mailto:example@mail.com
         """
 
         let parser = ICParser()
@@ -27,7 +28,8 @@ final class GetPropertiesTests: XCTestCase {
 
     func testCreatePropertiesWithNewLine() {
         let rawIcs = """
-        ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;RSVP=TRUE\r\n ;CN=example@mail.com;X-NUM-GUESTS=0:mailto:example@mail.com
+        ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;RSVP=\
+        TRUE\r\n ;CN=example@mail.com;X-NUM-GUESTS=0:mailto:example@mail.com
         """
 
         let parser = ICParser()
@@ -35,6 +37,11 @@ final class GetPropertiesTests: XCTestCase {
 
         XCTAssertTrue(!properties.isEmpty)
         XCTAssertEqual(properties.count, 1)
-        XCTAssertEqual(properties.first?.name, "ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;RSVP=TRUE;CN=example@mail.com;X-NUM-GUESTS=0")
+
+        let name = """
+        ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=\
+        ACCEPTED;RSVP=TRUE;CN=example@mail.com;X-NUM-GUESTS=0
+        """
+        XCTAssertEqual(properties.first?.name, name)
     }
 }

@@ -21,10 +21,8 @@ public struct ICEvent: ICComponentable {
     ///
     /// See more in [RFC 5545](
     /// https://www.rfc-editor.org/rfc/rfc5545#section-3.8.1.1))
-    // TODO: - Attatchment
     // var attachment: [ICAttachment]?
 
-    // TODO: Categories
     // var categories: [String]?
 
     /// Defines the access classification for a calendar component.
@@ -33,10 +31,8 @@ public struct ICEvent: ICComponentable {
     /// https://www.rfc-editor.org/rfc/rfc5545#section-3.8.1.3)
     public var classification: String?
 
-    // TODO: Comments
     // var comment: [String]?
 
-    // TODO: Contact
     // var contact: [String]?
 
     /// Provides a more complete description of the calendar component
@@ -85,7 +81,6 @@ public struct ICEvent: ICComponentable {
     ///
     /// See more in [RFC 5545](
     /// https://www.rfc-editor.org/rfc/rfc5545#section-3.8.2.5)
-    // TODO: - Duration
     // var duration: ICDuration?
 
     /// The list of DATE-TIME exceptions for recurring events, to-dos, journal entries,
@@ -93,7 +88,6 @@ public struct ICEvent: ICComponentable {
     ///
     /// See more in [RFC 5545](
     /// https://www.rfc-editor.org/rfc/rfc5545#section-3.8.5.1)
-    // TODO: - EXDATE
     //var exceptionDates: [Date]?
 
     /// Specifies information related to the global position for the activity specified by
@@ -101,7 +95,6 @@ public struct ICEvent: ICComponentable {
     ///
     /// See more in [RFC 5545](
     /// https://www.rfc-editor.org/rfc/rfc5545#section-3.8.1.6)
-    // TODO: - GEO
     //var geoPosition: [CGFloat]?
 
     /// Any property name with a "X-" prefix
@@ -150,23 +143,18 @@ public struct ICEvent: ICComponentable {
     ///
     /// See more in [RFC 5545](
     /// https://www.rfc-editor.org/rfc/rfc5545#section-3.8.5.2)
-    // TODO: - RDATE
     // var recurrenceDates: [ICDateTime]?
 
     /// A rule or repeating pattern for recurring events, to-dos, journal entries, or time zone definitions.
     ///
     /// See more in [RFC 5545](
     /// https://www.rfc-editor.org/rfc/rfc5545#section-3.8.5.3)
-    // TODO: - RRule
     // var recurrenceRule: ICRule?
 
-    // TODO: - Related To
     // var relatedTo: [String]?
 
-    // TODO: - Request Status
     // var requestStatus
 
-    // TODO: - Resources
     // var resources: [String]?
 
     /// Defines the revision sequence number of the  calendar component within a sequence of revisions.

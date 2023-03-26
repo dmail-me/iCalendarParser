@@ -3,12 +3,22 @@ import XCTest
 
 final class AttendeesTests: XCTestCase {
     func testBuildAttendees() {
+        let propertyName1 = """
+        ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=\
+        ACCEPTED;RSVP=TRUE;CN=test@example.com;X-NUM-GUESTS=0
+        """
+
         let attendee1 = ICProperty(
-            "ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;RSVP=TRUE;CN=test@example.com;X-NUM-GUESTS=0",
+            propertyName1,
             "mailto:test@example.com"
         )
+
+        let propertyName2 = """
+        ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=\
+        NEEDS-ACTION;RSVP=TRUE;CN=test2@example.com;X-NUM-GUESTS=0
+        """
         let attendee2 = ICProperty(
-            "ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;RSVP=TRUE;CN=test2@example.com;X-NUM-GUESTS=0",
+            propertyName2,
             "mailto:test2@example.com"
         )
         let attendees = PropertyBuilder.buildAttendees(from: [attendee1, attendee2])
@@ -18,8 +28,12 @@ final class AttendeesTests: XCTestCase {
     }
 
     func testAttendeeEmail() {
+        let propertyName = """
+        ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;\
+        RSVP=TRUE;CN=test@example.com;X-NUM-GUESTS=0
+        """
         let property = ICProperty(
-            "ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;RSVP=TRUE;CN=test@example.com;X-NUM-GUESTS=0",
+            propertyName,
             "mailto:test@example.com"
         )
 
@@ -33,8 +47,12 @@ final class AttendeesTests: XCTestCase {
     }
 
     func testAttendeeNonstandardProperties() {
+        let propertyName = """
+        ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;\
+        RSVP=TRUE;CN=test@example.com;X-NUM-GUESTS=0
+        """
         let property = ICProperty(
-            "ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;RSVP=TRUE;CN=test@example.com;X-NUM-GUESTS=0",
+            propertyName,
             "mailto:test@example.com"
         )
 
@@ -53,8 +71,12 @@ final class AttendeesTests: XCTestCase {
     }
 
     func testAttendeeParticipationStatus() {
+        let propertyName = """
+        ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;\
+        RSVP=TRUE;CN=test@example.com;X-NUM-GUESTS=0
+        """
         let property = ICProperty(
-            "ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;RSVP=TRUE;CN=test@example.com;X-NUM-GUESTS=0",
+            propertyName,
             "mailto:test@example.com"
         )
 
