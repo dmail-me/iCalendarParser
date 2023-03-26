@@ -59,7 +59,7 @@ Contributions to iCalendarParser are welcomed and encouraged!
 
 ## License
 
-iCalendarParser is available under the MIT license. See LICENSE for more information.
+iCalendarParser is available under the MIT license. See [LICENSE](LICENSE) for more information.
 
 ## Credits
 
