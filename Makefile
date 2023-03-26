@@ -8,6 +8,6 @@ test:
 lint:
 	$(SWIFTLINT) --strict
 
-.PHONY: correct
+.PHONY: fix
 correct:
-	$(SWIFTLINT) autocorrect
+	$(SWIFTLINT) --fix
