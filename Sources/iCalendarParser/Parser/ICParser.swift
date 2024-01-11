@@ -161,6 +161,7 @@ public struct ICParser {
             event.timeTransparency = component.buildProperty(of: Constant.Property.timeTransparency)
             event.url = URL(string: component.buildProperty(of: Constant.Property.url) ?? "")
             event.uid = component.buildProperty(of: Constant.Property.uid) ?? ""
+            event.recurrenceRule = component.buildProperty(of: Constant.Property.recurrenceRule)
 
             event.nonStandardProperties = component.getNonStandardProperties()
 

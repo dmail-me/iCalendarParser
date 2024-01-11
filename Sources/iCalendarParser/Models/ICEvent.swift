@@ -149,7 +149,7 @@ public struct ICEvent: ICComponentable {
     //
     // See more in [RFC 5545](
     // https://www.rfc-editor.org/rfc/rfc5545#section-3.8.5.3)
-    // var recurrenceRule: ICRule?
+    public var recurrenceRule: ICRRule?
 
     // var relatedTo: [String]?
 
